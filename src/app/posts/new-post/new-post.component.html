@@ -1,0 +1,86 @@
+<script src="../../../../../AppData/Local/Temp/new-post.component.ts"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3 class="text-primary">
+                Add New Post
+            </h3>
+            <p class="mb-5">You can add your new post here</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form class="row" [formGroup]="formData" (ngSubmit)="onSubmit()">
+
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post Information</h5>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text"  class="form-control" formControlName="title" placeholder="Title" (keyup)="onTitleChanged($event)">
+                    </div>
+                    <div class="form-group">
+                        <label>Permalink</label>
+                        <input type="text" class="form-control" formControlName="permalink" name="permalink">
+                    </div>
+                    <div class="form-group">
+                        <label>Excerpt</label>
+                        <textarea class="form-control" formControlName="excerpt" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">Post Content</h5>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <angular-editor placeholder="Add your content here"
+                                        formControlName="postContent"></angular-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post Options</h5>
+                    <div class="form-group">
+                        <label>Select a post category</label>
+                        <select class="form-control" formControlName="categoryId">
+                            <option value="">Please select a category</option>
+                            <option *ngFor="let category of categories"
+                                    [value]="category.id">{{ category.name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" (change)="onFileSelected($event)" accept="image/*">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3 text-center mb-5">
+            <button class="btn btn-info mr-3 " type="submit">Save Post</button>
+            <button class="btn btn-warning" routerLink="/posts">Back to Posts</button>
+        </div>
+    </form>
+</div>
+<!--<form [formGroup]="formData" (ngSubmit)="onSubmit()">-->
+<!--    <input type="text" formControlName="title" placeholder="Title">-->
+<!--    <input type="text" formControlName="postContent" placeholder="postContent">-->
+<!--    <input type="text" formControlName="excerpt" placeholder="Description">-->
+<!--    <input type="file" (change)="onFileSelected($event)" accept="image/*">-->
+<!--    <div class="form-group">-->
+<!--        <label >Select a post category</label>-->
+<!--        <select class="form-control"  formControlName="categoryId">-->
+<!--            <option value="">Please select a category</option>-->
+<!--            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
+
+
