@@ -31,10 +31,18 @@ export class PostService {
     return this.http.put<Post>(`${this.apiServerUrl}/post/update`, post);
   }
 
-  public deleteEmployee(postId: number): Observable<void> {
+  public deletePost(postId: number): Observable<void> {
     const url = `${this.apiServerUrl}/post/${postId}`;
     return this.http.delete<void>(url);
   }
 
+  public getProfileImage(imageName: string): Observable<Blob> {
+    const url = `${this.apiServerUrl}/post/getImage/${imageName}`;
+    return this.http.get(url, {responseType: 'blob'});
+  }
+
+  public getPostImages(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiServerUrl}/getImage`);
+  }
 
 }

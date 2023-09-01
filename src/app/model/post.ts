@@ -7,5 +7,5 @@ export interface Post {
   excerpt: String;
   postContent: String;
   category: Category;
-
+  imgPath: String;
 }

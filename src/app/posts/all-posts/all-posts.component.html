@@ -19,11 +19,31 @@
 <div class="container">
   <h1>TechGeekNext Upload Image Example</h1>
   <br>
-  <form>
-    <div class="form-group">
-      <input type="file" (change)="onImageUpload($event)">
-    </div>
-    <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1">
-  </form>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th>Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col">Permalink</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let post of posts">
+      <th scope="row">{{post.id}}</th>
+
+      <img [src]="post.imgPath" alt="Profile Picture"/>
+
+      <td>{{post.title}}</td>
+      <td>{{post.postContent}}</td>
+      <td>{{post.permalink}}</td>
+      <td (click)="onDelete(+post.id)">
+        <button class="btn btn-primary">Remove</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
 </div>
